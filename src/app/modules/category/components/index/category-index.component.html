@@ -1,0 +1,31 @@
+<div class="container p-3">
+    <h1 class="display-3 text-center"> Category </h1>
+
+    <div class="row mt-5">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Created At</th>
+                    <th scope="col">Updated At</th>
+                    <th scope="col">Deleted At</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let category of categories; index as i;">
+                    <th scope="row">{{ category.id }}</th>
+                    <td>{{ category.name }}</td>
+                    <td>{{ category.created | date:'dd/MM/yyyy hh:mm:ss' }}</td>
+                    <td>{{ category.updated == null ? " - " : category.updated | date:'dd/MM/yyyy hh:mm:ss' }}</td>
+                    <td>{{ category.deleted == null ? " - " : category.deleted | date:'dd/MM/yyyy hh:mm:ss' }}</td>
+                    <td>
+                        <a class="btn btn-info mx-1" [routerLink]="['edit']" [state]="category"> Edit </a>
+                        <a class="btn btn-danger mx-1" [routerLink]="['delete']" [state]="category"> Delete </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
